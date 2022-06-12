@@ -1,0 +1,37 @@
+*{text-align:center;}
+.all_in{width:800px;
+    margin:0 auto;
+}
+
+.click,.reset,.generate{padding:7px 17px;
+    font-size: 17px;
+    margin:0 50px;
+    color:white;
+    border: none;
+    border-radius: 10px;
+
+}
+.click:hover,.reset:hover,.generate:hover{cursor: pointer;
+  
+
+}
+.click{background-color: blue;}
+.reset{background-color: red;}
+.generate{background-color: green;}
+.withjs{margin:40px;}
+#js2{display:flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: space-around;
+
+}
+#js2 img{margin-bottom:20px;
+    box-shadow: 5px 5px 40px rgb(119, 111, 111);}
+.bottom2{display: flex;
+flex-direction: row;
+justify-content: space-around;}
+.bottom2 img{width:25%;
+}
+.bottom2 img:hover{cursor: pointer;
+    box-shadow: 5px 5px 40px blue;
+}
