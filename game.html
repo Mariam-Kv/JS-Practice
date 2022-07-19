@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head> </head>
+  <body>
+    <button
+      onclick="setRed()"
+      id="red"
+      style="background-color: red; padding: 20px"
+    >
+      red
+    </button>
+    <button
+      onclick="setYellow()"
+      id="yellow"
+      style="background-color: yellow; padding: 20px"
+    >
+      yellow
+    </button>
+    <button
+      onclick="setGreen()"
+      id="green"
+      style="background-color: green; padding: 20px"
+    >
+      green
+    </button>
+  </body>
+  <script>
+    let red = 0;
+    let yellow = 0;
+    let green = 0;
+    function setRed() {
+      red += 1;
+      document.getElementById("red").innerHTML = red;
+    }
+
+    function setYellow() {
+      yellow += 1;
+      document.getElementById("yellow").innerHTML = yellow;
+    }
+    function setGreen() {
+      green += 1;
+      document.getElementById("green").innerHTML = green;
+    }
+  </script>
+</html>
