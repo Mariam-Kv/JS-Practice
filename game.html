@@ -3,43 +3,46 @@
   <head> </head>
   <body>
     <button
-      onclick="setRed()"
-      id="red"
+      class="button"
+      value="red"
       style="background-color: red; padding: 20px"
     >
       red
     </button>
     <button
-      onclick="setYellow()"
-      id="yellow"
+      class="button"
+      value="yellow"
       style="background-color: yellow; padding: 20px"
     >
       yellow
     </button>
     <button
-      onclick="setGreen()"
-      id="green"
+      class="button"
+      value="green"
       style="background-color: green; padding: 20px"
     >
       green
     </button>
+    <button
+      id="clean"
+      onclick="clean()"
+      style="background-color: rgb(174, 170, 240); padding: 20px"
+    >
+      clear
+    </button>
   </body>
   <script>
-    let red = 0;
-    let yellow = 0;
-    let green = 0;
-    function setRed() {
-      red += 1;
-      document.getElementById("red").innerHTML = red;
-    }
-
-    function setYellow() {
-      yellow += 1;
-      document.getElementById("yellow").innerHTML = yellow;
-    }
-    function setGreen() {
-      green += 1;
-      document.getElementById("green").innerHTML = green;
+    let colors = { red: 0, yellow: 0, green: 0 };
+    let buttonColors = document.querySelectorAll(".button");
+    buttonColors.forEach(
+      (but) =>
+        (but.onclick = () => {
+          colors[but.value] += 1;
+          but.innerHTML = colors[but.value];
+        })
+    );
+    function clean() {
+      buttonColors.forEach((but) => (but.innerHTML = 0));
     }
   </script>
 </html>

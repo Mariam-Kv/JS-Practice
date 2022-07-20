@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div id="dog" src="">f</div>
+    <button id="change" onclick="changeDog()">Change dogs!</button>
+    <script>
+      let dog = document.getElementById("dog");
+      function Show() {
+        let url = "https://dog.ceo/api/breeds/image/random";
+        function showPhoto(response) {
+          let img = response.data.message;
+          dog.innerHTML = `<img src=${img} /  style="height:500px;width:500px">`;
+        }
+        axios(url).then(showPhoto);
+      }
+      function changeDog() {
+        Show();
+      }
+      Show();
+    </script>
+  </body>
+</html>

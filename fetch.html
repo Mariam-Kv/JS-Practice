@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head> </head>
+  <body>
+    <div id="dog" src="">f</div>
+    <button id="change" onclick="changeDog()">Change dogs!</button>
+    <script>
+      let dog = document.getElementById("dog");
+      function Show() {
+        let url = "https://dog.ceo/api/breeds/image/random";
+        fetch(url).then(function (response) {
+          response.json().then(function (json) {
+            let img = json.message;
+            dog.innerHTML = `<img src=${img} /  style="height:500px;width:500px">`;
+          });
+        });
+      }
+      function changeDog() {
+        Show();
+      }
+      Show();
+    </script>
+  </body>
+</html>
