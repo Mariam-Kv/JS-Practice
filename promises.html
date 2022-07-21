@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head> </head>
+  <body>
+    <script>
+      let promise1 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          ready = false;
+          ready ? resolve(3) : reject(38);
+        }, 3000);
+      });
+      console.log(
+        promise1
+          .then((value) => console.log(value))
+          .catch((value) => console.log(value))
+      );
+
+      let dog = async () => {
+        let url = "https://dog.ceo/api/breeds/image/random";
+        let response = await fetch(url);
+        let data = await response.json();
+
+        console.log(data);
+      };
+      dog();
+    </script>
+  </body>
+</html>
