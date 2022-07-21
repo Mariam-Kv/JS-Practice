@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <input id="input" />
+    <button id="withdraw" onclick="withdraw()">Withdraw</button>
+    <button id="deposit" onclick="deposit()">Deposit</button>
+
+    <p id="showBalance">0</p>
+    <script>
+      class Bank {
+        constructor(name, balance) {
+          this.name = name;
+          this.balance = balance;
+        }
+      }
+      let input = document.getElementById("input").value;
+      let bank = new Bank("tbc", Number(input));
+      let show = document.getElementById("showBalance");
+      show.innerHTML = `YOUR BALANCE: ${Number(input)}`;
+      function withdraw() {
+        if (bank.balance < 100) {
+          return bank.balance;
+        } else {
+          bank.balance -= 100;
+          show.innerHTML = `YOUR BALANCE: ${bank.balance}`;
+          return show.innerHTML;
+        }
+      }
+      function deposit() {
+        bank.balance += 100;
+        show.innerHTML = `YOUR BALANCE: ${bank.balance}`;
+        return show.innerHTML;
+      }
+    </script>
+  </body>
+</html>

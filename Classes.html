@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head> </head>
+  <body>
+    <script>
+      class Car {
+        constructor(name, color, speed) {
+          (this.name = name), ((this.color = color), (this.speed = speed));
+        }
+        drive() {
+          console.log("just drove!");
+          this.speed += 10;
+        }
+        break() {
+          console.log("it's broken");
+          this.speed -= 10;
+        }
+        stop() {
+          this.speed = 0;
+        }
+      }
+      let fer = new Car("ferrari", "red", 110);
+
+      fer.drive();
+
+      fer.break();
+      fer.break();
+      fer.break();
+      fer.break();
+      fer.break();
+      fer.break();
+      fer.break();
+      fer.stop();
+
+      let porshe = new Car("porshe", "yellow", 250);
+      console.log(porshe);
+      console.log(porshe.name);
+      console.log(porshe.color);
+      console.log(porshe.speed);
+      porshe.stop();
+
+      console.log(porshe.speed);
+    </script>
+  </body>
+</html>
