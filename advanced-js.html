@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <button id="greetings">hello</button>
+  </head>
+  <body>
+    <script>
+      let num = 0;
+      while (num < 10) {
+        num += 1;
+      }
+      console.log(num);
+
+      let g = document
+        .getElementById("greetings")
+        .addEventListener("click", () => {
+          alert("hellooo");
+        });
+      document.addEventListener("keydown", (event) => {
+        if (event.key == "m") {
+          document.getElementById("victory").play();
+        } else {
+          document.getElementById("fastheal").play();
+        }
+      });
+    </script>
+    <audio src="sounds/victory.mp3" type="audio/mpeg" id="victory"></audio>
+    <audio src="sounds/fastheal.mp3" type="audio/mpeg" id="fastheal"></audio>
+  </body>
+</html>
