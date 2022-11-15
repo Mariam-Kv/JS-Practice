@@ -9,7 +9,7 @@ fetch("09.txt")
       i = i.split(" ");
       arr.push(i);
       for (let j of arr) {
-        if (i.includes(j[1]) && j !== i) {
+        if (i[0] === j[1] && j !== i) {
           j = j.push(i);
         }
       }

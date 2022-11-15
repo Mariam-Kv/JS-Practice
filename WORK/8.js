@@ -1,6 +1,6 @@
 let obj = {};
 let bit = 65535;
-fetch("011.txt")
+fetch("08.txt")
   .then((response) => response.text())
   .then((text) => {
     let data = text.split(/\r?\n/);
