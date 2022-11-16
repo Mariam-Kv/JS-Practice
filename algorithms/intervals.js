@@ -6,21 +6,21 @@ let inputs = [
 ];
 let arr = [];
 
-function intervals(input) {}
-console.log(intervals(inputs));
-
-/*  input.sort((a, b) => a[0] - b[0]);
-
-  if (input.length === 1) {
-    return input;
+function intervals(inputs) {
+  inputs.sort((a, b) => a[0] - b[0]);
+  if (inputs.length === 1) {
+    return inputs;
   }
-  arr.push(input[0]);
-  for (let i of input) {
-    let recent = arr[arr.length - 1][1];
-    if (i[0] <= recent) {
-      recent = Math.max(i[1], recent);
+  arr.push(inputs[0]);
+  for (let i in inputs) {
+    if (inputs[i][0] <= arr[arr.length - 1][1]) {
+      arr[arr.length - 1][1] = 
+        Math.max(arr[arr.length - 1][1], inputs[i][1])
+      
     } else {
-      arr.push(i);
+      arr.push(inputs[i]);
     }
   }
-  return arr;*/
+  return arr;
+}
+console.log(intervals(inputs));
