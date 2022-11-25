@@ -4,11 +4,13 @@ function Fibonacci(index) {
   let b = 1;
   let arr = [a, b];
   while (arr.length !== index) {
-    c = a + b;
+    let c = a + b;
     arr.push(c);
     a = b;
     b = c;
+    //for let i =3 ////i++
+    //[a,b]=[b,a+b]
   }
-  return arr;
+  return arr[arr.length - 1];
 }
 console.log(Fibonacci(index));
