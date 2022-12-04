@@ -22,10 +22,8 @@ function ClassNames(arr) {
     }
   }
 
-  let newArr = Object.entries(obj).sort((a, b) => b[1] - a[1]);
-  for (let i of newArr) {
-    result.push(i[0]);
-  }
+  let result = Object.keys(obj).sort((a, b) => obj[b] - obj[a]);
+
   return result;
 }
 console.log(ClassNames(arr));
