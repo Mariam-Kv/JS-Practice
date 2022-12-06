@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+      function pow(x, n) {
+        if (n === 1) {
+          return x;
+        } else {
+          return x * pow(x, n - 1);
+        }
+      }
+      console.log(pow(2, 4));*/
+      let counter = 0;
+      let total = 0;
+      let students = {
+        js: [
+          {
+            name: "gff",
+            progress: 100,
+          },
+          {
+            name: "gfrrf",
+            progress: 60,
+          },
+        ],
+        html: {
+          basic: [
+            {
+              name: "gffgf",
+              progress: 20,
+            },
+            {
+              name: "anna",
+              progress: 18,
+            },
+          ],
+          pro: [{ name: "sam", progress: 10 }],
+        },
+      };
+
+      for (let [key, value] of Object.entries(students)) {
+        if (Array.isArray(value)) {
+          for (let i of value) {
+            counter += 1;
+            total += i.progress;
+          }
+        } else {
+          for (let g of Object.values(value)) {
+            for (let i of g) {
+              counter += 1;
+              total += +i.progress;
+            }
+          }
+        }
+
+        //console.log(total / counter);
+      }
+
+      function factorial(n) {
+        if (typeof n !== "number" || !Number.isInteger(n)) {
+          return "not";
+        }
+
+        if (n < 1) {
+          return 1;
+        } else {
+          return n * factorial(n - 1);
+        }
+      }
+      console.log(factorial(3));
+      function fib(f) {
+        if (f <= 1) {
+          return f;
+        } else {
+          return fib(f - 1) + fib(f - 2);
+        }
+      }
+      console.log(fib(7));
+      /* //without recursion
+      
+      
+  function fib(f) {
+  let a = 0;
+  let b = 1;
+  let c = 0;
+  let str = "";
+  if (typeof f !== "number" || f!==parseInt(f)) {
+    return "";
+  } else {
+    for (let i = 1; i <= f; i++) {
+      a = b;
+      b = c;
+      c = a + b;
+      str += b;
+      str += " ";
+    }
+  }
+  return str.slice(0, -1);
+}
+   */
+    </script>
+  </body>
+</html>

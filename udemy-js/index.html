@@ -1,90 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>JavaScript</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div id="first" class="btn-block">
+      <button class="blue some"></button>
+      <button></button>
+      <button></button>
+      <button></button>
+      <button></button>
+      <button></button>
+      <button></button>
+      <button></button>
+    </div>
+    <style>
+      .btn {
+        background-color: rgb(228, 124, 124);
+        padding: 5px 10px;
+      }
+      .btn2 {
+        padding: 20px;
+      }
+    </style>
     <script>
-      /*
-      function pow(x, n) {
-        if (n === 1) {
-          return x;
-        } else {
-          return x * pow(x, n - 1);
-        }
-      }
-      console.log(pow(2, 4));*/
-      let counter = 0;
-      let total = 0;
-      let students = {
-        js: [
-          {
-            name: "gff",
-            progress: 100,
-          },
-          {
-            name: "gfrrf",
-            progress: 60,
-          },
-        ],
-        html: {
-          basic: [
-            {
-              name: "gffgf",
-              progress: 20,
-            },
-            {
-              name: "anna",
-              progress: 18,
-            },
-          ],
-          pro: [{ name: "sam", progress: 10 }],
-        },
-      };
-
-      for (let [key, value] of Object.entries(students)) {
-        if (Array.isArray(value)) {
-          for (let i of value) {
-            counter += 1;
-            total += i.progress;
+      let btns = document.querySelectorAll("button");
+      btns.forEach((element) => {
+        element.classList.add("btn");
+      });
+      let id = document
+        .getElementById("first")
+        .addEventListener("click", (e) => {
+          console.log(event.target.tagName);
+          if (e.target.classList.contains("btn")) {
+            e.target.classList.toggle("btn2");
           }
-        } else {
-          for (let g of Object.values(value)) {
-            for (let i of g) {
-              counter += 1;
-              total += +i.progress;
-            }
-          }
-        }
-
-        //console.log(total / counter);
-      }
-      function Recursion(data) {
-        let total = 0;
-        let counter = 0;
-        if (Array.isArray(data)) {
-          for (let i of value) {
-            counter += 1;
-            total += i.progress;
-          }
-        }
-      }
-
-      function factorial(n) {
-        if (typeof(n) !== "number" || !Number.isInteger(n)) {
-          return "not"
-        }
-
-        if (n < 1) {
-          return 1;
-        } else {
-          return n * factorial(n - 1);
-        }
-      }
-      console.log(factorial(3));
+        });
     </script>
   </body>
 </html>
