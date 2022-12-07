@@ -8,37 +8,23 @@
   </head>
   <body>
     <div id="first" class="btn-block">
-      <button class="blue some"></button>
-      <button></button>
-      <button></button>
-      <button></button>
-      <button></button>
-      <button></button>
-      <button></button>
-      <button></button>
+      <button class="btn">click</button>
     </div>
-    <style>
-      .btn {
-        background-color: rgb(228, 124, 124);
-        padding: 5px 10px;
-      }
-      .btn2 {
-        padding: 20px;
-      }
-    </style>
+
     <script>
-      let btns = document.querySelectorAll("button");
-      btns.forEach((element) => {
-        element.classList.add("btn");
+      let time;
+      let i = 0;
+      document.querySelector(".btn").addEventListener("click", () => {
+        time = setInterval(func, 500);
       });
-      let id = document
-        .getElementById("first")
-        .addEventListener("click", (e) => {
-          console.log(event.target.tagName);
-          if (e.target.classList.contains("btn")) {
-            e.target.classList.toggle("btn2");
-          }
-        });
+      function func() {
+        if (i < 3) {
+          console.log(33);
+          i++;
+        } else {
+          clearTimeout(time);
+        }
+      }
     </script>
   </body>
 </html>
