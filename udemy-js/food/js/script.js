@@ -10,7 +10,14 @@ window.addEventListener("DOMContentLoaded", () => {
       el.style.display = "none";
     });
   }
-  function show(id = 0) {
+
+  function show() {
+    let id = localStorage.getItem("id");
+    if (!id) {
+      tabs[0].classList.add("tabheader__item_active");
+      contents[0].style.display = "block";
+      return;
+    }
     tabs[id].classList.add("tabheader__item_active");
     contents[id].style.display = "block";
   }
@@ -21,8 +28,9 @@ window.addEventListener("DOMContentLoaded", () => {
     if (e?.target?.classList.contains("tabheader__item")) {
       tabs.forEach((el, i) => {
         if (e.target === el) {
+          localStorage.setItem("id", i);
           hide();
-          show(i);
+          show();
         }
       });
     }
@@ -114,40 +122,40 @@ window.addEventListener("DOMContentLoaded", () => {
 
   //class
 
-  class Items {
-    constructor(img, title, info, price, parent) {
-      this.img = img;
-      this.title = title;
-      this.info = info;
-      this.price = price;
-      this.parent = document.querySelector(parent);
-    }
-    render() {
-      let item = document.createElement("div");
-      item.innerHTML = ` <div class="menu__item">
-            <img src=${this.img} alt="vegy" />
-            <h3 class="menu__item-subtitle">Меню "${this.title}"</h3>
-            <div class="menu__item-descr">
-             ${this.info}
-            </div>
-            <div class="menu__item-divider"></div>
-            <div class="menu__item-price">
-              <div class="menu__item-cost">Цена:</div>
-              <div class="menu__item-total"><span>${this.price}</span> грн/день</div>
-            </div>
-          </div>`;
+  // class Items {
+  //   constructor(img, title, info, price, parent) {
+  //     this.img = img;
+  //     this.title = title;
+  //     this.info = info;
+  //     this.price = price;
+  //     this.parent = document.querySelector(parent);
+  //   }
+  //   render() {
+  //     let item = document.createElement("div");
+  //     item.innerHTML = ` <div class="menu__item">
+  //           <img src=${this.img} alt="vegy" />
+  //           <h3 class="menu__item-subtitle">Меню "${this.title}"</h3>
+  //           <div class="menu__item-descr">
+  //            ${this.info}
+  //           </div>
+  //           <div class="menu__item-divider"></div>
+  //           <div class="menu__item-price">
+  //             <div class="menu__item-cost">Цена:</div>
+  //             <div class="menu__item-total"><span>${this.price}</span> грн/день</div>
+  //           </div>
+  //         </div>`;
 
-      this.parent.append(item);
-    }
-  }
+  //     this.parent.append(item);
+  //   }
+  // }
 
-  new Items(
-    "img/tabs/post.jpg",
-    "mariam",
-    "dfdfd",
-    "ere",
-    ".menu .container"
-  ).render();
+  // new Items(
+  //   "img/tabs/post.jpg",
+  //   "mariam",
+  //   "dfdfd",
+  //   "ere",
+  //   ".menu .container"
+  // ).render();
   let forms = document.querySelectorAll("form");
   let title = document.querySelector(".modal__title");
   forms.forEach((el) => {
@@ -171,4 +179,37 @@ window.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
+  //slider
+
+  let index = 0;
+  let sliders = document.querySelectorAll(".offer__slide");
+  let prev = document.querySelector(".offer__slider-prev");
+  let next = document.querySelector(".offer__slider-next");
+  prev.addEventListener("click", moveSlidersPrev);
+  next.addEventListener("click", moveSlidersNext);
+  let currentIndex = document.querySelector("#current");
+  currentIndex.innerHTML = `0${+index + 1}`;
+
+  function moveSlidersNext() {
+    index++;
+
+    if (index === sliders.length) {
+      index = 0;
+    }
+
+    sliderChange(index);
+  }
+  function moveSlidersPrev() {
+    index--;
+    if (index === 0) {
+      index = sliders.length;
+    }
+
+    sliderChange(index);
+  }
+  function sliderChange(index) {
+    currentIndex.innerHTML = `0${index + 1}`;
+    sliders.forEach((el) => el.classList.add("hide"));
+    sliders[index].classList.remove("hide");
+  }
 });

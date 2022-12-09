@@ -13,7 +13,12 @@ a {
 .t3,
 .t4 {
   display: none;
- 
+}
+.show {
+  display: block;
+}
+.hide {
+  display: none;
 }
 .btn {
   width: 220px;
