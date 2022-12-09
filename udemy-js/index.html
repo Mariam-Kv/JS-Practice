@@ -12,7 +12,7 @@
     </div>
 
     <script>
-      let time;
+      /* let time;
       let i = 0;
       document.querySelector(".btn").addEventListener("click", () => {
         time = setInterval(func, 500);
@@ -24,7 +24,18 @@
         } else {
           clearTimeout(time);
         }
+      }*/
+      //функция-конструктор
+
+      function User(name, age) {
+        this.name = name;
+        this.age = age;
       }
+      let mari = new User("mari", 23);
+
+      User.prototype.hello = function () {
+        return "hello " + this.name;
+      };
     </script>
   </body>
 </html>

@@ -20,4 +20,4 @@ first: for (let j = 1; j < 7; j++) {
 
 
 */
-console.log(new Map(["1", 5, "3", ["10"]]));
+
