@@ -1,15 +1,20 @@
-import { tabs } from "./tabs";
-import { calculator } from "./calculator";
-import { slider } from "./slider";
-import { timer } from "./timer";
+import tabs from "./tabs";
+import calculator from "./calculator";
+import slider from "./slider";
+import timer from "./timer";
+
 window.addEventListener("DOMContentLoaded", () => {
   tabs();
   calculator();
   slider();
   timer();
   //modal
+  let feedback = document.createElement("h2");
+  feedback.classList.add("centered");
   let btns = document.querySelectorAll(".btn");
   let modal = document.querySelector(".modal");
+  let form1 = document.querySelector("#form1");
+
   function closeModal() {
     modal.style.display = "none";
     document.body.style.overflow = "scroll";
@@ -18,6 +23,10 @@ window.addEventListener("DOMContentLoaded", () => {
     modal.style.display = "block";
     document.body.style.overflow = "hidden";
     clearInterval(modalTimer);
+    if (feedback.innerHTML) {
+      feedback.style.display = "none";
+      form1.style.display = "block";
+    }
   }
 
   modal.addEventListener("click", (e) => {
@@ -27,9 +36,10 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   btns.forEach((el) => {
-    el.addEventListener("click", () => {
-      openModal();
-    });
+    if (!el.classList.contains("btn_min"))
+      el.addEventListener("click", () => {
+        openModal();
+      });
   });
   document.querySelector(".modal__close").addEventListener("click", () => {
     closeModal();
@@ -90,13 +100,13 @@ window.addEventListener("DOMContentLoaded", () => {
   //   "ere",
   //   ".menu .container"
   // ).render();
+
   let forms = document.querySelectorAll("form");
-  let title = document.querySelector(".modal__title");
+
   forms.forEach((el) => {
     el.addEventListener("submit", (e) => {
       let name = el.querySelector(".name");
       let phone = el.querySelector(".phone");
-
       e.preventDefault();
       fetch(
         "https://react-projects-160bb-default-rtdb.firebaseio.com/js.json",
@@ -108,7 +118,10 @@ window.addEventListener("DOMContentLoaded", () => {
         if (res.ok) {
           name.value = "";
           phone.value = "";
-          closeModal();
+          el.style.display = "none";
+          feedback.style.display = "block";
+          feedback.innerHTML = "СПАСИБО! СКОРО МЫ С ВАМИ СВЯЖЕМСЯ";
+          el.insertAdjacentElement("afterend", feedback);
         }
       });
     });

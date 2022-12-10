@@ -1,4 +1,4 @@
-export function slider() {
+export default function slider() {
   //slider
   let indeX;
   if (localStorage.getItem("index")) {

@@ -1,4 +1,4 @@
-export function tabs() {
+export default function tabs() {
   //tabs
   let tabs = document.querySelectorAll(".tabheader__item");
   let tabParent = document.querySelector(".tabheader__items");

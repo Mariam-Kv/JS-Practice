@@ -1,4 +1,4 @@
-export function calculator() {
+export default function calculator() {
   //calculator
 
   let sex, ratio, height, weight, age;

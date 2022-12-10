@@ -10,7 +10,7 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "calculator": () => (/* binding */ calculator)
+/* harmony export */   "default": () => (/* binding */ calculator)
 /* harmony export */ });
 function calculator() {
   //calculator
@@ -128,7 +128,7 @@ function calculator() {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "slider": () => (/* binding */ slider)
+/* harmony export */   "default": () => (/* binding */ slider)
 /* harmony export */ });
 function slider() {
   //slider
@@ -183,7 +183,7 @@ function slider() {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "tabs": () => (/* binding */ tabs)
+/* harmony export */   "default": () => (/* binding */ tabs)
 /* harmony export */ });
 function tabs() {
   //tabs
@@ -236,7 +236,7 @@ function tabs() {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "timer": () => (/* binding */ timer)
+/* harmony export */   "default": () => (/* binding */ timer)
 /* harmony export */ });
 function timer() {
   //timer
@@ -353,14 +353,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 window.addEventListener("DOMContentLoaded", () => {
-  (0,_tabs__WEBPACK_IMPORTED_MODULE_0__.tabs)();
-  (0,_calculator__WEBPACK_IMPORTED_MODULE_1__.calculator)();
-  (0,_slider__WEBPACK_IMPORTED_MODULE_2__.slider)();
-  (0,_timer__WEBPACK_IMPORTED_MODULE_3__.timer)();
+  (0,_tabs__WEBPACK_IMPORTED_MODULE_0__["default"])();
+  (0,_calculator__WEBPACK_IMPORTED_MODULE_1__["default"])();
+  (0,_slider__WEBPACK_IMPORTED_MODULE_2__["default"])();
+  (0,_timer__WEBPACK_IMPORTED_MODULE_3__["default"])();
   //modal
+  let feedback = document.createElement("h2");
+  feedback.classList.add("centered");
   let btns = document.querySelectorAll(".btn");
   let modal = document.querySelector(".modal");
+  let form1 = document.querySelector("#form1");
+
   function closeModal() {
     modal.style.display = "none";
     document.body.style.overflow = "scroll";
@@ -369,6 +374,10 @@ window.addEventListener("DOMContentLoaded", () => {
     modal.style.display = "block";
     document.body.style.overflow = "hidden";
     clearInterval(modalTimer);
+    if (feedback.innerHTML) {
+      feedback.style.display = "none";
+      form1.style.display = "block";
+    }
   }
 
   modal.addEventListener("click", (e) => {
@@ -378,9 +387,10 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   btns.forEach((el) => {
-    el.addEventListener("click", () => {
-      openModal();
-    });
+    if (!el.classList.contains("btn_min"))
+      el.addEventListener("click", () => {
+        openModal();
+      });
   });
   document.querySelector(".modal__close").addEventListener("click", () => {
     closeModal();
@@ -441,13 +451,13 @@ window.addEventListener("DOMContentLoaded", () => {
   //   "ere",
   //   ".menu .container"
   // ).render();
+
   let forms = document.querySelectorAll("form");
-  let title = document.querySelector(".modal__title");
+
   forms.forEach((el) => {
     el.addEventListener("submit", (e) => {
       let name = el.querySelector(".name");
       let phone = el.querySelector(".phone");
-
       e.preventDefault();
       fetch(
         "https://react-projects-160bb-default-rtdb.firebaseio.com/js.json",
@@ -459,7 +469,10 @@ window.addEventListener("DOMContentLoaded", () => {
         if (res.ok) {
           name.value = "";
           phone.value = "";
-          closeModal();
+          el.style.display = "none";
+          feedback.style.display = "block";
+          feedback.innerHTML = "СПАСИБО! СКОРО МЫ С ВАМИ СВЯЖЕМСЯ";
+          el.insertAdjacentElement("afterend", feedback);
         }
       });
     });

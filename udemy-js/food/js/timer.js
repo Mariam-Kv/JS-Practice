@@ -1,4 +1,4 @@
-export function timer() {
+export default function timer() {
   //timer
   let deadLine = "2023-01-01";
   function getTimeRemaining(endTime) {
