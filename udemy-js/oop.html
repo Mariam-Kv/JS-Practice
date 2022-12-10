@@ -8,28 +8,72 @@
   </head>
   <body>
     <script>
-      class User {
-        constructor(name, age) {
-          this.name = name;
-          this.age = age;
-        }
-        greeting() {
-          return "hello " + this.name;
-        }
+      // class User {
+      //   constructor(name, age) {
+      //     this.name = name;
+      //     this.age = age;
+      //   }
+      //   greeting() {
+      //     return "hello " + this.name;
+      //   }
+      // }
+      // class Prof extends User {
+      //   constructor(name, age, prof) {
+      //     super(name, age);
+      //     this.prof = prof;
+      //   }
+      //   show() {
+      //     return "i'm " + this.prof;
+      //   }
+      // }
+      // let mari = new User("mari", 23);
+      // let prog = new Prof("f", 3, "prof");
+      // console.log(prog.greeting());
+      // console.log(prog.show());
+
+      //getter/setter
+
+      // class User {
+      //   constructor(name, age) {
+      //     this.name = name;
+      //     this.age = age;
+      //   }
+
+      //   get fullname() {
+      //     return this.name + " " + this.age;
+      //   }
+      //   set changeUser(value) {
+      //     return ([this.name, this.age] = value.split(" "));
+      //   }
+      // }
+      // let mari = new User("mari", 23);
+      // mari.changeUser = "KV mariam";
+      // console.log(mari.fullname);
+      // console.log(mari.age);
+
+      //encapsultion
+      // class User {
+      //   constructor(name, age) {
+      //     this.#name = name;
+      //     this.#age = age;
+      //   }
+      // }
+      // let mari = new User("mari", 23);
+      // mari.name = "fddfd";
+      // console.log(mari.name);
+      // class Name extends User{
+      //   constructor(name,age,prof){
+      //     super(name,age)
+
+      //   }
+      // }
+      function memodule() {
+        this.hello = (name) => {
+          console.log("hello" + name);
+        };
       }
-      class Prof extends User {
-        constructor(name, age, prof) {
-          super(name, age);
-          this.prof = prof;
-        }
-        show() {
-          return "i'm " + this.prof;
-        }
-      }
-      let mari = new User("mari", 23);
-      let prog = new Prof("f", 3, "prof");
-      console.log(prog.greeting());
-      console.log(prog.show());
+      let mari = new memodule();
+      console.log(mari.hello("mari"));
     </script>
   </body>
 </html>

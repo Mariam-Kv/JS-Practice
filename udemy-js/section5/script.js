@@ -33,7 +33,7 @@
 
 //RegExp
 //let ans = prompt("your name");
-let reg = /\D/g;
+//let reg = /\D/g;
 //console.log(ans.search(reg));
 //console.log(ans.match(reg));
 
