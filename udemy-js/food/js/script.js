@@ -36,10 +36,9 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   btns.forEach((el) => {
-    if (!el.classList.contains("btn_min"))
-      el.addEventListener("click", () => {
-        openModal();
-      });
+    el.addEventListener("click", () => {
+      openModal();
+    });
   });
   document.querySelector(".modal__close").addEventListener("click", () => {
     closeModal();
@@ -116,6 +115,7 @@ window.addEventListener("DOMContentLoaded", () => {
         }
       ).then((res) => {
         if (res.ok) {
+          console.log(3);
           name.value = "";
           phone.value = "";
           el.style.display = "none";

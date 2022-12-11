@@ -1,5 +1,8 @@
 {
   "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.5",
+    "@babel/preset-env": "^7.20.2",
     "concurrently": "^7.6.0",
     "http-server": "^14.1.1",
     "webpack-cli": "^5.0.1"
@@ -12,6 +15,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "ansi-regex": "^5.0.1",
     "ansi-styles": "^4.3.0",
     "async": "^2.6.4",
@@ -72,5 +76,8 @@
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "browserslist": [
+    ">1%"
+  ]
 }
