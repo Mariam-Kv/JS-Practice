@@ -1,10 +1,10 @@
-import { tns } from "./node_modules/tiny-slider/src/tiny-slider";
-tns({
-  container: ".my-slider",
-  items: 1,
-  slideBy: "page",
-  autoplay: true,
-});
+// import { tns } from "./node_modules/tiny-slider/src/tiny-slider";
+// tns({
+//   container: ".my-slider",
+//   items: 1,
+//   slideBy: "page",
+//   autoplay: true,
+// });
 // function* generator() {
 //   yield 3;
 //   yield "three";

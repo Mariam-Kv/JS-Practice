@@ -39,3 +39,5 @@
 
 //console.log("09-12-22".replace(/-/g, ":"));
 //console.log(ans.match(reg));
+let str = [] + 3;
+console.log(+[1, 2, 3]);
