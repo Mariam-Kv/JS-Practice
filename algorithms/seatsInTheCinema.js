@@ -1,0 +1,35 @@
+let input1 = [1, 0, 0, 0, 1, 0, 1];
+let input2 = [0, 1];
+let input3 = [0, 0, 0, 0, 1, 1, 0, 1, 1];
+let maxDistToClosest = function (seats) {
+  //in the middle
+  let max = 0;
+
+  return max;
+};
+console.log(maxDistToClosest(input3));
+// let count = 0;
+// let i = 0;
+// if (seats[i] === 0) {
+//   while (seats[i] === 0) {
+//     i++;
+//     count++;
+//     max = Math.max(max, count);
+//   }
+// }
+// for (let i = 0; i < seats.length; i++) {
+//   let current = seats[i];
+
+//   if (current === 0 && i === seats.length - 1) {
+//     count++;
+//     max = Math.max(max, count);
+//     break;
+//   }
+
+//   if (current === 1) {
+//     count = 0;
+//   } else {
+//     count++;
+//     max = Math.max(max, Math.ceil(count / 2));
+//   }
+// }
