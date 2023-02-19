@@ -2,15 +2,13 @@ let index = 10;
 function Fibonacci(index) {
   let a = 0;
   let b = 1;
-  let arr = [a, b];
-  while (arr.length !== index) {
+
+  for (let i = 2; i <= index; i++) {
     let c = a + b;
-    arr.push(c);
-    a = b;
-    b = c;
-    //for let i =3 ////i++
-    //[a,b]=[b,a+b]
+    [a, b] = [b, c];
+    //[a, b] = [b, a+b];
   }
-  return arr[arr.length - 1];
+  return b;
 }
+
 console.log(Fibonacci(index));
