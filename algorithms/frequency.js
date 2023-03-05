@@ -7,7 +7,7 @@ function flatten(arr) {
       res[arr[i]] = 1;
     }
   }
-  let v = Object.entries(res).map((el) => el[1]);
-  return Math.max(v);
+  let v = Object.entries(res).sort((el, el2) => el2[1] - el[1]);
+  return v[0][0];
 }
-console.log(flatten(["a", "b", "a", "c"]));
+console.log(flatten(["a", "b", "d", "w", "w", "c", "c"]));
