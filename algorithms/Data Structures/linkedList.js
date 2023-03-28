@@ -1,3 +1,11 @@
+//массив
+//O(1) - получить элемент (знаем позицию элемента)
+//О(n) - добавить/удалить
+//О(n) - поиск
+
+// Linked list
+//+ мгновенно можем добавлять элемент
+// - чтобы получить элемент нам надо итерироваться самого начала (мы не имеем индекс элемента)
 class Node {
   constructor(value, next = null) {
     this.value = value;
@@ -7,33 +15,62 @@ class Node {
   //   return String(this.value);
   // }
 }
+// [value,next]->[value,next]->[value,next]
+
+// node - Узел сети  
+class Node {
+  constructor(value, next = null) {
+    this.value = value;
+    this.next = next;
+  }
+}
 class LinkedList {
   constructor() {
-    //start of linkedlist
     this.head = null;
     this.tail = null;
   }
   append(value) {
-    let node = new Node(value, null);
+    let node = new Node(value);
+    if (!this.head) {
+      this.head = node;
+    }
     if (this.tail) {
       this.tail.next = node;
     }
-    if (!this.head) {
-      this.head = node;
-    }
-
     this.tail = node;
-    return this;
   }
   prepend(value) {
-    let node = new Node(value, this.head);
-
+    let node = new Node(value);
     if (!this.head) {
       this.head = node;
       this.tail = node;
+    } else {
+      let old = this.head;
+      this.head = node;
+      this.head.next = old;
     }
+  }
+  insertAfter(after, value) {
+    let found = this.find(after);
 
-    this.head = node;
+    if (found) {
+      let temp = found.next;
+      let newNode = new Node(value);
+      found.next = newNode;
+      newNode.next = temp;
+      return this;
+    }
+    return false;
+  }
+  find(value) {
+    let current = this.head;
+    while (current) {
+      if (current.value === value) {
+        return current;
+      }
+      current = current.next;
+    }
+    return false;
   }
   toArray() {
     let arr = [];
@@ -44,27 +81,26 @@ class LinkedList {
     }
     return arr;
   }
-  find(data) {
-    if (!this.head) {
-      return;
-    }
-    let current = this.head;
-    while (current) {
-      if (current.value === data) {
-        return current;
-      }
-      current = current.next;
-    }
-    return false;
-  }
-  delete(data) {
-    let find = this.find(data);
-    console.log(find);
-  }
+  // remove(value) {
+  //   let found = this.find(value);
+  //   if (!found) {
+  //     return;
+  //   }
+  //   let current = this.head;
+  //   console.log(current);
+  //   while (current) {
+  //     if (current === found) {
+  //       current.next = current.next.next;
+  //     }
+  //     current = current.next;
+  //   }
+  //   return this;
+  // }
 }
+
 let list = new LinkedList();
-list.append("a").append("b").prepend("c");
-// console.log(JSON.stringify(list));
-// console.log(list.toArray());
-console.log(list.find("a"));
-console.log(list.delete("a"));
+
+list.append("a");
+list.append("b");
+
+console.log(list.remove("a"));

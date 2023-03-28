@@ -1,6 +1,7 @@
-//O(log2n*n)
-
+//O(n*log2(n))
+//сортировка Хоара
 // разделяй и властвуй
+let count=0;
 function quickSort(arr) {
   if (arr.length <= 1) {
     return arr;
@@ -15,6 +16,7 @@ function quickSort(arr) {
     if (arr[i] > middle) {
       more.push(arr[i]);
     }
+    count+=1
   }
   return [...quickSort(less), middle, ...quickSort(more)];
 }

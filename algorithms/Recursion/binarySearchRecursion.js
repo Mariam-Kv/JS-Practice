@@ -1,6 +1,6 @@
 function binary(arr, target) {
   let start = 0;
-  let end = arr.length - 1;
+  let end = arr.length ;
   let middle = Math.floor((start + end) / 2);
 
   if (arr.length === 1 && arr[0] !== target) {
@@ -11,7 +11,7 @@ function binary(arr, target) {
   }
 
   if (arr[middle] < target) {
-    return binary(arr.splice(middle + 1, arr.length - 1), target);
+    return binary(arr.splice(middle, arr.length), target);
   }
   if (arr[middle] > target) {
     return binary(arr.splice(0, middle), target);

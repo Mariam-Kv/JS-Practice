@@ -1,6 +1,7 @@
-//O(n*n)-> better than bubble sort
+//O(1/2*n*n)->O(n*n) better than bubble sort
 
-
+//самый не эффективный
+let count = 0;
 function selectionSort(arr) {
   for (let i = 0; i < arr.length; i++) {
     let min = i;
@@ -8,7 +9,9 @@ function selectionSort(arr) {
       if (arr[j] < arr[min]) {
         min = j;
       }
+      count += 1;
     }
+    //меняем элементы местами
     let temp = arr[i];
     arr[i] = arr[min];
     arr[min] = temp;
