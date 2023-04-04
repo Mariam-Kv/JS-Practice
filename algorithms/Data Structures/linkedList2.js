@@ -1,1 +1,7 @@
-console.log(3)
+//append
+//prepend
+//find
+//insertAfter
+//toArray
+//toArray
+//delete

@@ -17,7 +17,7 @@ class Node {
 }
 // [value,next]->[value,next]->[value,next]
 
-// node - Узел сети  
+// node - Узел сети
 class Node {
   constructor(value, next = null) {
     this.value = value;
@@ -30,6 +30,7 @@ class LinkedList {
     this.tail = null;
   }
   append(value) {
+    //О(1)
     let node = new Node(value);
     if (!this.head) {
       this.head = node;
@@ -40,6 +41,7 @@ class LinkedList {
     this.tail = node;
   }
   prepend(value) {
+    //О(1)
     let node = new Node(value);
     if (!this.head) {
       this.head = node;
@@ -51,8 +53,8 @@ class LinkedList {
     }
   }
   insertAfter(after, value) {
+    //О(n)
     let found = this.find(after);
-
     if (found) {
       let temp = found.next;
       let newNode = new Node(value);
@@ -63,6 +65,7 @@ class LinkedList {
     return false;
   }
   find(value) {
+    //О(n)
     let current = this.head;
     while (current) {
       if (current.value === value) {
@@ -73,6 +76,7 @@ class LinkedList {
     return false;
   }
   toArray() {
+    //О(n)
     let arr = [];
     let current = this.head;
     while (current) {
@@ -81,26 +85,44 @@ class LinkedList {
     }
     return arr;
   }
-  // remove(value) {
-  //   let found = this.find(value);
-  //   if (!found) {
-  //     return;
-  //   }
-  //   let current = this.head;
-  //   console.log(current);
-  //   while (current) {
-  //     if (current === found) {
-  //       current.next = current.next.next;
-  //     }
-  //     current = current.next;
-  //   }
-  //   return this;
-  // }
+  delete(value) {
+    //О(n)
+    let current = this.head;
+    if (!this.find(value)) {
+      return "Such element not found";
+    }
+    if (this.head.value === value) {
+      this.head = this.head.next;
+    } else {
+      while (current.next) {
+        if (current.next.value === value) {
+          current.next = current.next.next;
+        } else {
+          current = current.next;
+        }
+      }
+    }
+
+    return this;
+  }
 }
 
 let list = new LinkedList();
 
-list.append("a");
-list.append("b");
+// list1.append("a");
+// list1.append("b");
 
-console.log(list.remove("a"));
+// list1.append("b");
+// list1.append("c");
+// list1.append("b");
+// // list1.prepend("d");
+// // list1.append("m");
+// // console.log(list1);
+// // console.log(list1.find("b"));
+// list1.insertAfter("a", "m");
+// list1.prepend("f");
+// // console.log(list1);
+// // console.log(list1.toArray());
+// console.log(list1.toString());
+// console.log(list1.delete("b"));
+// console.log(list1.toString());
