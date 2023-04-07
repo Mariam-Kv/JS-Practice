@@ -1,5 +1,5 @@
 function digitalRoot(n) {
-  n = "" + n;
+  n = String(n);
   if (n.length === 1) {
     return +n;
   }
@@ -10,3 +10,8 @@ function digitalRoot(n) {
   return digitalRoot(total);
 }
 console.log(digitalRoot(244));
+
+// function digital_root(n) {
+//   return ((n - 1) % 9) + 1;
+// }
+// console.log(digital_root(942));
