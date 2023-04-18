@@ -1,0 +1,18 @@
+body {
+  text-align: center;
+}
+main {
+  display: flex;
+  flex-direction: row;
+
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.left {
+  flex: 0.4;
+  background-color: blueviolet;
+}
+.context {
+  flex: 0.6;
+  background-color: aqua;
+}
