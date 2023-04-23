@@ -1,6 +1,7 @@
 function valueArr(arr) {
   for (let i = 0; i < arr.length; i++) {
     if (typeof arr[i] === "object") {
+      // we don't return - второй раз не будет вызываться!
       valueArr(arr[i]);
     } else {
       arr[i] = 0;

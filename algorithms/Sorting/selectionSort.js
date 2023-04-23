@@ -2,22 +2,19 @@
 
 //самый не эффективный
 let count = 0;
+
 function selectionSort(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    let min = i;
-    for (let j = i + 1; j < arr.length; j++) {
-      if (arr[j] < arr[min]) {
-        min = j;
+  for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = i + 1; j < arr.length - 1; j++) {
+      count++;
+      if (arr[i] > arr[j]) {
+        let old = arr[i];
+
+        arr[i] = arr[j];
+        arr[j] = old;
       }
-      count += 1;
     }
-    //меняем элементы местами
-    let temp = arr[i];
-    arr[i] = arr[min];
-    arr[min] = temp;
   }
-
-  return arr;
+  return [arr, count];
 }
-
-console.log(selectionSort([44, -23, 0, 3, 1, 2, 1, 8]));
+console.log(selectionSort([3, 45, 1, 64, 13, 23, 64, 121]));
