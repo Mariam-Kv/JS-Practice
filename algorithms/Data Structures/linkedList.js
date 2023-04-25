@@ -4,20 +4,19 @@
 //О(n) - поиск
 
 // Linked list
+//O(n) - получить элемент (знаем позицию элемента)/search
+//О(1) - добавить/удалить
 //+ мгновенно можем добавлять элемент
 // - чтобы получить элемент нам надо итерироваться самого начала (мы не имеем индекс элемента)
-class Node {
-  constructor(value, next = null) {
-    this.value = value;
-    this.next = next;
-  }
-  // toString() {
-  //   return String(this.value);
-  // }
-}
-// [value,next]->[value,next]->[value,next]
 
-// node - Узел сети
+//append +
+//prepend +
+//find +
+//insertAfter +
+//toArray +
+//toString +
+//delete
+
 class Node {
   constructor(value, next = null) {
     this.value = value;
@@ -30,42 +29,34 @@ class LinkedList {
     this.tail = null;
   }
   append(value) {
-    //О(1)
     let node = new Node(value);
-    if (!this.head) {
+    if (!this.tail) {
       this.head = node;
+    } else {
+      let current = this.head;
+      while (current.next) {
+        current = current.next;
+      }
+      current.next = node;
     }
-    if (this.tail) {
-      this.tail.next = node;
-    }
+
     this.tail = node;
   }
-  prepend(value) {
-    //О(1)
+  preppend(value) {
     let node = new Node(value);
-    if (!this.head) {
+    if (!this.tail) {
       this.head = node;
       this.tail = node;
-    } else {
+    }
+    if (this.tail) {
       let old = this.head;
-      this.head = node;
-      this.head.next = old;
+      this.head = new Node(value, old);
     }
-  }
-  insertAfter(after, value) {
-    //О(n)
-    let found = this.find(after);
-    if (found) {
-      let temp = found.next;
-      let newNode = new Node(value);
-      found.next = newNode;
-      newNode.next = temp;
-      return this;
-    }
-    return false;
   }
   find(value) {
-    //О(n)
+    if (!this.tail) {
+      return "Linked list is empty";
+    }
     let current = this.head;
     while (current) {
       if (current.value === value) {
@@ -75,8 +66,22 @@ class LinkedList {
     }
     return false;
   }
+  insertAfter(target, value) {
+    if (!this.tail) {
+      return "Linked list is empty";
+    }
+    let current = this.head;
+    while (current) {
+      if (current.value === target) {
+        let old = current.next;
+        current.next = new Node(value, old);
+        return this;
+      }
+      current = current.next;
+    }
+    return false;
+  }
   toArray() {
-    //О(n)
     let arr = [];
     let current = this.head;
     while (current) {
@@ -85,33 +90,57 @@ class LinkedList {
     }
     return arr;
   }
-  delete(value) {
-    //О(n)
+  toString() {
+    let str = [];
     let current = this.head;
-    if (!this.find(value)) {
-      return "Such element not found";
+    while (current) {
+      str.push(current.value);
+      current = current.next;
     }
-    if (this.head.value === value) {
+    return str.toString();
+  }
+  delete(value) {
+    //fitst element
+    if (!this.tail) {
+      return false;
+    }
+    while (this?.head.value === value) {
       this.head = this.head.next;
-    } else {
-      while (current.next) {
-        if (current.next.value === value) {
-          current.next = current.next.next;
-        } else {
-          current = current.next;
-        }
+    }
+    //middle element
+
+    let current = this.head;
+    while (current.next) {
+      if (current.next.value === value) {
+        current.next = current.next.next;
+      } else {
+        current = current.next;
       }
     }
-
+    //last element
+    if (this.tail.value === value) {
+      this.tail = current;
+    }
     return this;
   }
 }
 
-let list = new LinkedList();
+let node = new LinkedList();
 
-// list1.append("a");
-// list1.append("b");
+node.append("a");
+node.append("b");
+node.append("c");
 
+node.preppend("c");
+node.preppend("c");
+
+// // console.log(node.find("c"));
+// console.log(node.insertAfter("a", "m"));
+// node.append("c");
+// console.log(node.toArray());
+// console.log(node.toString());
+// node.delete("c");
+console.log(node);
 // list1.append("b");
 // list1.append("c");
 // list1.append("b");
@@ -126,3 +155,27 @@ let list = new LinkedList();
 // console.log(list1.toString());
 // console.log(list1.delete("b"));
 // console.log(list1.toString());
+// delete(value) {
+//   if (!this.tail) {
+//     return false;
+//   }
+//   let current = this.head;
+//   while (this.head && this.head.value === value) {
+//     this.head = this.head.next;
+//   }
+//   while (current.next) {
+//     if (current.next.value === value) {
+//       let old = current.next.next;
+
+//       current.next = old;
+//     } else {
+//       current = current.next;
+//     }
+//   }
+//   if ((this.tail.value = value)) {
+//     console.log(current);
+//     this.tail = current;
+//   }
+//   return this;
+// }
+

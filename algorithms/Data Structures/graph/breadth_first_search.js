@@ -11,12 +11,11 @@ function breadthSearch(graph, start, end) {
   let queue = [start];
   while (queue.length > 0) {
     let current = queue.shift();
-    if (graph[current]?.includes(end)) {
-      return true;
-    }
     if (!graph[current]) {
       graph[current] = [];
-    } else {
+    }
+    if (graph[current].includes(end)) return true;
+    else {
       queue = [...queue, ...graph[current]];
     }
   }

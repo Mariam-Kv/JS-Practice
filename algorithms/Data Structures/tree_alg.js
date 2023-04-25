@@ -30,15 +30,36 @@ const tree = [
     ],
   },
 ];
-function recursive(arr) {
+// recursion
+function sumOfTree(arr) {
   let sum = 0;
 
-  for (let i = 0; i < arr.length; i++) {
-    sum += arr[i].v;
-    if (arr[i].c) {
-      sum += recursive(arr[i].c);
+  arr.map((el) => {
+    if (el.v) {
+      sum += el.v;
+    }
+    if (el.c) {
+      sum += sumOfTree(el.c);
+    }
+  });
+  return sum;
+}
+console.log(sumOfTree(tree));
+
+// iteration
+function iterationOfTree(arr) {
+  let sum = 0;
+  let stack = [];
+  arr.forEach((node) => stack.push(node));
+  while (stack.length > 0) {
+    let current = stack.shift();
+    sum += current.v;
+    if (current.c) {
+      current.c.forEach((el) => {
+        stack.push(el);
+      });
     }
   }
   return sum;
 }
-console.log(recursive(tree));
+console.log(iterationOfTree(tree));

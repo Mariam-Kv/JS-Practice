@@ -1,5 +1,5 @@
 //1 1 2 3 5 8 13 21
-
+//O(2**n)
 function f(n) {
   if (n <=2){
     return 1;

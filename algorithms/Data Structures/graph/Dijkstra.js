@@ -11,23 +11,40 @@ graph["g"] = {};
 function shortPath(graph, start, end) {
   let costs = {};
   let processed = [];
-  Object.keys(graph).forEach((el) => {
-    if (el !== start) {
-      let value = graph[start][el];
-      costs[el] = value || Infinity;
+  let neighbors = {};
+  Object.keys(graph).forEach((node) => {
+    if (node !== start) {
+      let value = graph[start][node];
+      costs[node] = value || Infinity;
     }
   });
-  let node = findLowestCost(costs, processed);
-  return node;
+  let node = findNodeLowestCost(costs, processed);
+  while (node) {
+    let cost = costs[node];
+    neighbors = graph[node];
+    Object.keys(neighbors).forEach((neighbor) => {
+      let newCost = cost + neighbors[neighbor];
+      if (newCost < costs[neighbor]) {
+        costs[neighbor] = newCost;
+      }
+    });
+
+    processed.push(node);
+    node = findNodeLowestCost(costs, processed);
+  }
+  return costs;
 }
-function findLowestCost(costs, processed) {
+function findNodeLowestCost(costs, processed) {
   let lowestCost = Infinity;
   let lowestNode;
-  Object.keys(costs).forEach((el) => {
-    let value = costs[el];
-    if (value < lowestCost && !processed.includes(el)) lowestCost = value;
-    lowestNode = el;
+
+  Object.keys(costs).forEach((node) => {
+    if (costs[node] < lowestCost && !processed.includes(node)) {
+      lowestCost = costs[node];
+      lowestNode = node;
+    }
   });
+
   return lowestNode;
 }
 console.log(shortPath(graph, "a", "g"));

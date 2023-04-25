@@ -1,5 +1,16 @@
 function CashFunction(fn) {
-  return fn(5);
+  let cash = {};
+
+  return function (n) {
+    if (cash[n]) {
+      console.log("cash");
+      return cash[n];
+    }
+    let result = fn(n);
+    console.log("browser");
+    cash[n] = result;
+    return result;
+  };
 }
 
 // recursion
@@ -13,10 +24,13 @@ function CashFunction(fn) {
 // loop
 function factorial(n) {
   let sum = 1;
-  while (n > 1) {
+  while (n !== 1) {
     sum *= n;
-    n -= 1;
+    n--;
   }
   return sum;
 }
-console.log(CashFunction(factorial));
+let cashFactorial = CashFunction(factorial);
+console.log(cashFactorial(5));
+console.log(cashFactorial(5));
+console.log(cashFactorial(5));

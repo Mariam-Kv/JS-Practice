@@ -1,4 +1,7 @@
+//O(log(n))
+
 let array = [-1, 0, 3, 5, 7, 8, 9, 12];
+
 function binarySearch(arr, target) {
   let left = 0;
   let right = arr.length - 1;
