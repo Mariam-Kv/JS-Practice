@@ -8,6 +8,16 @@
   </head>
   <body>
     <script>
+      // "use strict";
+      // let data = { name: "Mari", age: 23 };
+      // let arg = "My name ";
+      // function information(arg) {
+      //   return arg + this.name;
+      // }
+
+      // console.log(information.call(data, arg));
+      // console.log(information.bind(data, arg)());
+
       const urlObj = {
         protocol: "https",
         domain: "mysite.com",
@@ -20,14 +30,19 @@
         const extractCurrProtocol = () => {
           return this.protocol;
         };
+        //function extractCurrDomain() {
+        //   return this.domain;
+        // }
+        // function extractCurrProtocol() {
+        //   return this.protocol;
+        // }
 
         return `${extractCurrProtocol()}://${extractCurrDomain()}`;
       }
 
-      const url = showCurrentURL.apply(urlObj);//array
-      console.log(url);
-      const url2 = showCurrentURL.bind(urlObj);
-      console.log(url());//! we must call func -> bind create a new function
+      console.log(showCurrentURL.apply(urlObj)); //array
+
+      console.log(showCurrentURL.bind(urlObj)()); //! we must call func -> bind create a new function
     </script>
   </body>
 </html>
