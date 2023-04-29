@@ -45,20 +45,28 @@ function sumOfTree(arr) {
   return sum;
 }
 console.log(sumOfTree(tree));
+//my
+// function sumOfTree(arr, sum = 0) {
+//   let el = arr.shift();
+
+//   if (!el) return sum;
+//   sum += el.v;
+//   if (el.c) arr = [...arr, ...el.c];
+
+//   return sumOfTree(arr, sum);
+// }
+// console.log(sumOfTree(tree));
+
 
 // iteration
 function iterationOfTree(arr) {
   let sum = 0;
-  let stack = [];
-  arr.forEach((node) => stack.push(node));
-  while (stack.length > 0) {
+  let stack = [...arr];
+
+  while (stack.length) {
     let current = stack.shift();
     sum += current.v;
-    if (current.c) {
-      current.c.forEach((el) => {
-        stack.push(el);
-      });
-    }
+    if (current.c) stack = [...stack, ...current.c];
   }
   return sum;
 }

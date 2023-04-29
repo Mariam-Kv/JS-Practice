@@ -26,6 +26,7 @@ function getShortestPath(graph, start, end) {
     processed.push(node);
 
     Object.keys(neighbors).map((el) => {
+      // costs[el] we have infinit which we switch to newCost
       let newCost = cost + neighbors[el];
       if (newCost < costs[el]) {
         costs[el] = newCost;
